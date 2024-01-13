@@ -7,6 +7,12 @@ const Home = () => {
     const handleSubmit = () =>{
         navigate(`/room/${roomId}`)
     }
+    const handleKeyPress = (e) => {
+    // Check if the pressed key is Enter (key code 13)
+    if (e.key === 'Enter') {
+      handleSubmit();
+    }
+  };
   return (
    <div className='container'>
    <div>
@@ -14,7 +20,7 @@ const Home = () => {
    </div>
    <div className='input-conatiner'>
     <p className='para-input'>Welcome to VideoChat</p>
-    <input type="text" onChange={(e)=>{setRoomId(e.target.value)}} value={roomId} className='input-inp' placeholder='Enter the RoomId'/>
+    <input type="text" onKeyPress={handleKeyPress} onChange={(e)=>{setRoomId(e.target.value)}} value={roomId} className='input-inp' placeholder='Enter the RoomId'/>
     {/* <button onClick={handleSubmit}>Join</button> */}
     <div style={{display:"flex",justifyContent:"center",marginTop:"1rem"}}>
       <p onClick={handleSubmit} className='input-btn'>Join</p>
